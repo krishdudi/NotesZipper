@@ -1,0 +1,16 @@
+.cl {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: rgb(30, 196, 247);
+    background: linear-gradient(
+      313deg,
+      rgb(54, 39, 224) 0%,
+      rgb(0, 253, 253) 100%
+    );
+  
+    font-family: 'Nunito', sans-serif;
+  }

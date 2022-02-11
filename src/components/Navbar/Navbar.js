@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import './Navbar.css'
+import { IoLogOutOutline, CgProfile, SiGnuprivacyguard, FiLogIn } from "react-icons/all"
+
 const Navbar = () => {
   let location = useLocation();
   let navigate = useNavigate();
@@ -12,9 +15,9 @@ const Navbar = () => {
   }, [location]);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          iNoteBook
+      <div className="container">
+        <Link className="navv" to="/">
+          NotesZipper
         </Link>
         <button
           className="navbar-toggler"
@@ -36,14 +39,16 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <Link className={`nav-link ${location.pathname==='/about' ? "active" : ""}`} to="/about">
-                About
+                Create
               </Link>
             </li>
           </ul>
           { !localStorage.getItem('token')?<form className="d-flex">
-          <Link className="btn btn-primary mx-2" to='/login' role="button">Login</Link>
-          <Link className="btn btn-primary mx-2" to='/signup' role="button">Signup</Link>
-          </form>:<button onClick={handleLogout} className="btn btn-primary">Logout</button>}  
+          <Link to='/signup'><SiGnuprivacyguard color='white' size = '28' className="displayIcon1" /></Link>
+          <Link to='/login'><FiLogIn color='white' size = '28' className="displayIcon1" /></Link>
+          </form>:<form><CgProfile color='white' size = '28' className="displayIcon1"/>
+            <IoLogOutOutline color='white' size='28' className="displayIcon" onClick={handleLogout}/></form>
+            }  
         </div>
       </div>
     </nav>
