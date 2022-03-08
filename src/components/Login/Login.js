@@ -27,23 +27,38 @@ const Login = (props) => {
             props.showAlert("Invalid credentials", "danger");
         }
     }
+    const handle = (e)=>{
+        e.preventDefault();
+        history("/signup");
+    }
     const onChange = (e)=>{
         setCredentials({...credentials, [e.target.name]: e.target.value})
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit} className="container">
-                <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Email</label>
-                    <input type="email" value={credentials.email} onChange={onChange} className="form-control" id="email" name="email" aria-describedby="emailHelp"/>
-                   
+        <div className='container' id="cl">
+            <div className="ma">
+            <input type="checkbox" id="chk" aria-hidden="true"/>
+
+                <div className="signup">
+                    <form onSubmit={handleSubmit}>
+                        <label for="chk" aria-hidden="true" onClick={handle} className="la">Sign up</label>
+                        <input type="text" className="cnt" id="name"  onChange={onChange} name="name" aria-describedby="emailHelp" placeholder="Name" />
+                        <input type="email" className="cnt" id="email"  onChange={onChange} name="email" aria-describedby="emailHelp" placeholder="Email" />
+                        <input type="password" className="cnt" id="password" onChange={onChange} name="password" minLength={5} required placeholder="Password" />
+                        <input type="password" className="cnt" id="cpassword" onChange={onChange} name="cpassword" minLength={5} required placeholder="Confirm Password" />
+                        <button type="submit" className="bnm">SignUp</button>
+                    </form>
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Password</label>
-                    <input type="password" value={credentials.password} onChange={onChange} className="form-control" id="password" name="password"/>
+
+                <div class="login">
+                    <form onSubmit={handleSubmit}>
+                        <label for="chk" aria-hidden="true" className="la" >LogIn</label>
+                        <input type="email" value={credentials.email} onChange={onChange} className="cnt" id="email" name="email" aria-describedby="emailHelp" placeholder="Email"/>
+                        <input type="password" value={credentials.password} onChange={onChange} className="cnt" id="password" name="password" placeholder="Password"/>
+                        <button type="submit" className="bnm">LogIn</button>
+                    </form>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+                </div>
         </div>
     )
 }

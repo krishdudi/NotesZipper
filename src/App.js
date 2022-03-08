@@ -3,11 +3,11 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home";
-import About from "./components/About";
+import AddNote from "./components/Addnote/AddNote";
 import NoteState from "./context/notes/NoteState";
 import Alert from "./components/Alert";
 import Login from "./components/Login/Login";
-import SignUp from "./components/SignUp";
+import SignUp from "./components/SignUp/SignUp";
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -29,7 +29,7 @@ function App() {
           <div className="container">
             <Routes>
               <Route path="/" element={<Home showAlert={showAlert} />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/about" element={<AddNote showAlert={showAlert} />} />
               <Route path="/login" element={<Login showAlert={showAlert} />} />
               <Route path="/signup" element={<SignUp showAlert={showAlert} />} />
             </Routes>

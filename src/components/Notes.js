@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import noteContext from "../context/notes/noteContext"
-import AddNote from './AddNote';
+// import AddNote from './Addnote/AddNote';
 import Noteitems from './Noteitems';
 import { useNavigate } from 'react-router-dom'
 
@@ -38,7 +38,7 @@ const Notes = (props) => {
     }
     return (
         <>
-            <AddNote showAlert={props.showAlert}/>
+            {/* <AddNote showAlert={props.showAlert}/> */}
             <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
             </button>
@@ -75,7 +75,7 @@ const Notes = (props) => {
                 </div>
             </div>
             <div className="row my-3">
-                <h2>Your notes</h2>
+                <h2 className="fw-bold">Welcome! Your notes</h2>
                 {notes.length===0 && 'No notes to display'}
                 {notes.map((note) => {
                     return <Noteitems key={note._id} updateNote={updateNote} showAlert={props.showAlert} note={note} />//passing a prop. minLength={5} required
