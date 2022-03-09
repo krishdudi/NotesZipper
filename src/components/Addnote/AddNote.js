@@ -1,5 +1,6 @@
 import React,{useContext, useState} from 'react'
 import noteContext from "../../context/notes/noteContext"
+import { Button, Form, Spinner } from "react-bootstrap";
 
 const AddNote = (props) => {
     const context = useContext(noteContext);
@@ -19,23 +20,39 @@ const AddNote = (props) => {
         
     return (
         <div>
-            <h1>Add a Note</h1>
-            <form action = "post">
-                <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Title</label>
-                    <input type="text" className="form-control" id="title" name="title" onChange={onChange} minLength={5} required />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label">Description</label>
-                    <input type="text" className="form-control" id="description" name="description" onChange={onChange} minLength={5} required />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label">Tag</label>
-                    <input type="text" className="form-control" id="tag" name="tag" onChange={onChange} />
-                </div>
-                
-                <button disabled={note.title.length<5 || note.description.length<5} type="submit" className="btn btn-primary" onClick={handleClick}>Add Note</button>
-            </form>
+            <h1 className="fw-bold">Add a Note</h1>
+            <Form className="mt-2" onSubmit={handleClick}>
+                <Form.Group className="mb-3" controlId="title">
+                    <Form.Label>Title</Form.Label> 
+                    <Form.Control type="text"  value={note.title} name="title" placeholder="Title" onChange={onChange} minLength={5} required />   
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="description">
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control
+                        as="textarea"
+                        rows={3}
+                        value={note.description}
+                        placeholder="Description..."
+                        onChange={onChange}
+                        name="description"
+                        minLength={5} required
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="tag">
+                    <Form.Label>Tags</Form.Label>
+                    <Form.Control 
+                        type="text"
+                        placeholder="work, personal, health...."
+                        value={note.tag}
+                        name="tag"
+                        onChange={onChange}
+                    />
+                </Form.Group>
+                <Button  type="submit" onClick={handleClick}>
+                    Add Note
+                </Button>
+            </Form>
+            
         </div>
     )
 }

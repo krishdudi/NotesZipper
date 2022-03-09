@@ -5,7 +5,7 @@ const NoteState = (props) => {
   const host = "http://localhost:8000/"
   const notesInitial = [];
   const [notes, setNotes] = useState(notesInitial);
-  const fetchNotes = async (title, description, tag) => {
+  const fetchNotes = async () => {
     //API call
     const response = await fetch(`${host}api/notes/fetchallnotes`, {
       method: "GET",

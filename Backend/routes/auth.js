@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const fetchuser = require('../middleware/fetchuser');
 
-JWT_SECRET = 'Krishanpal$$$Dudi';
+JWT_SECRET = process.env.JWT_SECRET;
 
 router.post('/createuser',[
     body('name', 'Enter a Valid name of at least 4 characters').isLength({ min: 3 }),

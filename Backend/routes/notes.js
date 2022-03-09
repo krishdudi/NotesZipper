@@ -83,4 +83,25 @@ router.delete('/deletenote/:id', fetchuser, async (req, res)=>{
         res.status(400).send('Some error occured');
     }
 })
+
+// Endpoint for viewing the note
+
+router.get('/view/:id', fetchuser, async (req, res)=>{
+    try{
+        let note = await Note.findById(req.params.id);
+        if(!note){
+            return res.status(404).send('Not Found');
+        }
+
+        if(note.user.toString() !== req.user.id){
+            return res.status(401).send('Not allowed');
+        }
+        // console.log(note);
+        res.json({note});
+    }
+    catch(error) {
+        console.error(error.message);
+        res.status(400).send('Some error occured');
+    }
+})
 module.exports = router;
