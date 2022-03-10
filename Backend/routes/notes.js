@@ -86,15 +86,12 @@ router.delete('/deletenote/:id', fetchuser, async (req, res)=>{
 
 // Endpoint for viewing the note
 
-router.get('/view/:id', fetchuser, async (req, res)=>{
+router.get('/view/:id', async (req, res)=>{
+    
     try{
         let note = await Note.findById(req.params.id);
         if(!note){
-            return res.status(404).send('Not Found');
-        }
-
-        if(note.user.toString() !== req.user.id){
-            return res.status(401).send('Not allowed');
+            return res.status(402).send('Not Found');
         }
         // console.log(note);
         res.json({note});

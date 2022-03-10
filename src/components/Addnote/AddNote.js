@@ -1,6 +1,6 @@
 import React,{useContext, useState} from 'react'
 import noteContext from "../../context/notes/noteContext"
-import { Button, Form, Spinner } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 const AddNote = (props) => {
     const context = useContext(noteContext);

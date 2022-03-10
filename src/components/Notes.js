@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import noteContext from "../context/notes/noteContext"
-// import AddNote from './Addnote/AddNote';
 import Noteitems from './Noteitems';
 import { useNavigate } from 'react-router-dom'
 
@@ -10,7 +9,6 @@ const Notes = (props) => {
     const { notes, fetchNotes, editNote } = context;
     useEffect(() => {
         if(localStorage.getItem('token')){
-            console.log('fffff');
             fetchNotes()
         }else{
         //     fetchNotes();

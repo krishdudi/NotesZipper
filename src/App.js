@@ -8,6 +8,7 @@ import NoteState from "./context/notes/NoteState";
 import Alert from "./components/Alert";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
+import View from "./components/View";
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -30,6 +31,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home showAlert={showAlert} />} />
               <Route path="/create" element={<AddNote showAlert={showAlert} />} />
+              <Route path="/view/:id" element={<View/>} />
               <Route path="/login" element={<Login showAlert={showAlert} />} />
               <Route path="/signup" element={<SignUp showAlert={showAlert} />} />
             </Routes>
