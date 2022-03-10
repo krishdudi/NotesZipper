@@ -6,7 +6,7 @@ const AddNote = (props) => {
     const context = useContext(noteContext);
     const {addNote} = context;
 
-    const [note, setNote] = useState({title: "", description: "", tag: "default"})
+    const [note, setNote] = useState({title: "", description: "", tag: "Default"})
     const handleClick = (e)=>{
         e.preventDefault();
         addNote(note.title, note.description, note.tag);
@@ -23,11 +23,11 @@ const AddNote = (props) => {
             <h1 className="fw-bold">Add a Note</h1>
             <Form className="mt-2" onSubmit={handleClick}>
                 <Form.Group className="mb-3" controlId="title">
-                    <Form.Label>Title</Form.Label> 
+                    <Form.Label className="fw-bold">Title</Form.Label> 
                     <Form.Control type="text"  value={note.title} name="title" placeholder="Title" onChange={onChange} minLength={5} required />   
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="description">
-                    <Form.Label>Description</Form.Label>
+                    <Form.Label className="fw-bold">Description</Form.Label>
                     <Form.Control
                         as="textarea"
                         rows={3}
@@ -39,7 +39,7 @@ const AddNote = (props) => {
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="tag">
-                    <Form.Label>Tags</Form.Label>
+                    <Form.Label className="fw-bold">Tags</Form.Label>
                     <Form.Control 
                         type="text"
                         placeholder="work, personal, health...."
@@ -48,7 +48,7 @@ const AddNote = (props) => {
                         onChange={onChange}
                     />
                 </Form.Group>
-                <Button  type="submit" onClick={handleClick}>
+                <Button  type="submit" onClick={handleClick} className="fw-bold">
                     Add Note
                 </Button>
             </Form>

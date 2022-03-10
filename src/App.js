@@ -9,6 +9,7 @@ import Alert from "./components/Alert";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
 import View from "./components/View";
+import Profile from "./components/Profile"
 
 function App() {
   const [alert, setAlert] = useState(null);
@@ -34,6 +35,7 @@ function App() {
               <Route path="/view/:id" element={<View/>} />
               <Route path="/login" element={<Login showAlert={showAlert} />} />
               <Route path="/signup" element={<SignUp showAlert={showAlert} />} />
+              <Route path="/profile" element={<Profile/>}/>
             </Routes>
           </div>
         </Router>

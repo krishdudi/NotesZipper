@@ -20,7 +20,7 @@ const View = () => {
 
     fetching();
   }, [params.id]);
-  console.log(noteDetails)
+  // console.log(noteDetails)
   return (
     <>
       {loading && (
@@ -33,18 +33,18 @@ const View = () => {
           <Spinner animation="border" />
         </div>
       )}
-      <h1>{noteDetails.title}</h1>
       <Container className="mt-5">
-        <h2 className="my-5">View you entire created note here!</h2>
+        <h2 className="my-5 fw-bold">View you entire created note here!</h2>
         <Card>
-          <Card.Header>{noteDetails.note?.tag}</Card.Header>
+          <Card.Header className="fw-bold">{noteDetails.note?.tag}</Card.Header>
           <Card.Body>
             <h3>{noteDetails?.title}</h3>
             <ReactMarkdown>{noteDetails.note?.description}</ReactMarkdown>
-            <Card.Footer className="text-muted">
+            <Card.Footer>
               <p>
                 Created:{" "}
-                <Moment format="YYYY/MM/DD">{noteDetails.note?.date}</Moment> |{" "}
+                <strong><Moment format="YYYY/MM/DD">{noteDetails.note?.date}</Moment></strong>
+                 |{" "}
                 <Moment format="hh:mm:ss">{noteDetails.note?.date}</Moment>
               </p>
             </Card.Footer>

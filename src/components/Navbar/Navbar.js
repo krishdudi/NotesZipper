@@ -8,10 +8,10 @@ const Navbar = () => {
   let navigate = useNavigate();
   const handleLogout = ()=>{
     localStorage.removeItem('token');
-    navigate('/login');
+    navigate('/signup');
   }
   useEffect(() => {
-    console.log(location.pathname);
+    // console.log(location.pathname);
   }, [location]);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -46,7 +46,7 @@ const Navbar = () => {
           { !localStorage.getItem('token')?<form className="d-flex">
           <Link to='/signup'><SiGnuprivacyguard color='white' size = '28' className="displayIcon1" /></Link>
           <Link to='/login'><FiLogIn color='white' size = '28' className="displayIcon1" /></Link>
-          </form>:<form><CgProfile color='white' size = '28' className="displayIcon1"/>
+          </form>:<form><Link to='/profile'><CgProfile color='white' size = '28' className="displayIcon1"/></Link>
             <IoLogOutOutline color='white' size='28' className="displayIcon" onClick={handleLogout}/></form>
             }  
         </div>

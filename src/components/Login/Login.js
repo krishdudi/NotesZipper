@@ -1,21 +1,26 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
+import {Spinner} from 'react-bootstrap'
 import './login.css'
 
 const Login = (props) => {
     const [credentials, setCredentials] = useState({email:"", password:""});
+    const [loading, setLoading] = useState(false);
     let history = useNavigate();
+    const host = "http://localhost:8000/";
     const handleSubmit = async (e)=>{
         e.preventDefault();
-        const response = await fetch("http://localhost:8000/api/auth/login", {
+        setLoading(true);
+        const response = await fetch(`${host}api/auth/login`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({email: credentials.email, password: credentials.password})
         });
+        setLoading(false);
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         if(json.success){
             //save the auth token and redirect
             localStorage.setItem('token', json.authUser);
@@ -35,6 +40,7 @@ const Login = (props) => {
         setCredentials({...credentials, [e.target.name]: e.target.value})
     }
     return (
+        <>
         <div className='container' id="cl">
             <div className="ma">
             <input type="checkbox" id="chk" aria-hidden="true"/>
@@ -56,10 +62,21 @@ const Login = (props) => {
                         <input type="email" value={credentials.email} onChange={onChange} className="cnt" id="email" name="email" aria-describedby="emailHelp" placeholder="Email"/>
                         <input type="password" value={credentials.password} onChange={onChange} className="cnt" id="password" name="password" placeholder="Password"/>
                         <button type="submit" className="bnm">LogIn</button>
+                        {loading && (
+                                <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    margin: "15px 0",
+                                }}>
+                                <Spinner animation="border" />
+                                </div>
+                            )}
                     </form>
                 </div>
                 </div>
         </div>
+        </>
     )
 }
 
